@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UserService } from './menu.service';
+import { CreateMenuDto } from './dto/create-menu.dto';
+import { UpdateMenuDto } from './dto/update-menu.dto';
 
 @Controller('user')
 export class UserController {
@@ -9,14 +9,16 @@ export class UserController {
 
   @Post()
   async  create(
-    @Body() createUserDto: CreateUserDto
+    @Body() CreateMenuDto: CreateMenuDto
   ) {
     try{
       await this.userService.create(
-        createUserDto,
+        CreateMenuDto,
       );
       return { 
-        success: this.userService.create(createUserDto),
+        // success: this.userService.create(CreateMenuDto),
+        // success: true,
+        success: CreateMenuDto,
         message:  'User created successfully',
       };
     } catch(error) {
@@ -38,7 +40,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateMenuDto) {
     return this.userService.update(+id, updateUserDto);
   }
 

@@ -1,4 +1,4 @@
-import { 
+import {
     Column,
     Entity, 
     PrimaryGeneratedColumn 
@@ -10,9 +10,12 @@ export class User {
     id:  number;
 
     @Column()
-    fullname: String;
+    dishname: String;
 
     @Column({unique : true})
-    email: String;
+    type: String;
 
+    @Column({unique : true})
+    price: number;
+    
 }
